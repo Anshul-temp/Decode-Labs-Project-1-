@@ -97,30 +97,7 @@ function initBookmarks() {
   updateSavedCount();
 }
 
-function initScrollSpy() {
-  const sections = ['hero', 'content', 'about'];
-  const navLinks = document.querySelectorAll('.nav-link, .bottom-link');
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        const id = entry.target.id;
-        navLinks.forEach((link) => {
-          const href = link.getAttribute('href');
-          link.classList.toggle('is-active', href === `#${id}`);
-        });
-      });
-    },
-    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
-  );
-
-  sections.forEach((id) => {
-    const section = document.getElementById(id);
-    if (section) observer.observe(section);
-  });
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   loadSavedCards();
